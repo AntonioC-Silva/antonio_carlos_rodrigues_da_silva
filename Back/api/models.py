@@ -12,7 +12,7 @@ class Locals(models.Model):
 
 
 class Ambientes(models.Model):
-    local = models.models.ForeignKey(Locals, verbose_name=("Local"), on_delete=models.CASCADE)
+    local = models.ForeignKey(Locals, verbose_name=("Local"), on_delete=models.CASCADE)
     descricao = models.TextField()
     responsavel = models.ForeignKey(Responsaveis, verbose_name=("responsavel"),on_delete=models.CASCADE)
 

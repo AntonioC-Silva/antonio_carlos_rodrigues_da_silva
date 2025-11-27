@@ -42,7 +42,7 @@ class LocalsView(ListCreateAPIView):
     # filterset_class = LocalsFilter
 
 class LocalsDetailView(RetrieveUpdateDestroyAPIView):
-    queryser = Locals.objects.all()
+    queryset = Locals.objects.all()
     serializer_class = LocalsSerializer
     permission_classes = [IsAuthenticated]
 
