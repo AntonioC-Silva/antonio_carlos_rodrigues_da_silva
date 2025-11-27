@@ -22,12 +22,14 @@ class Sensores(models.Model):
         Umidade = '2', 'Umidade'
         Luminosidade = '3', 'Luminosidade'
         Contador = '4', 'Contador'
+
+    tipo = models.CharField(max_length=1, choices=Sensor.choices, default=Sensor.Temperatura)
     mac_address = models.CharField(max_length=17)
     unidade_med = models.CharField(max_length=50)
     latitude = models.FloatField()
     longitude = models.FloatField()
     status = models.BooleanField(default=True)
-    ambiente = models.ForeignKey(Ambientes, verbose_nome=("Ambiente"), on_delete=models.CASCADE)
+    ambiente = models.ForeignKey(Ambientes, verbose_name=("Ambiente"), on_delete=models.CASCADE)
 
 class Historico(models.Model):
     sensor = models.ForeignKey(Sensores, verbose_name=("Sensor"), on_delete=models.CASCADE)
