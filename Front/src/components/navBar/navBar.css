@@ -1,0 +1,83 @@
+.navBar{
+    background-color: #121212;
+    color: #1ed760;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    padding: 0 10px;
+    box-shadow: 0 1px 5px rgb(80, 80, 80);
+    z-index: 1;
+}
+
+.navBar img{
+    width: 200px;
+}
+
+.subMenu{
+    margin-top: 20px;
+    background-color:#121212;
+    width: 100%;
+    position: fixed;
+    height: 60px;
+    top: 80px;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+
+}
+
+.menuNav{
+    width: 100%;
+}
+
+.menuNav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.menuNav li{
+    font-size: 20px;
+    margin-left: 20px;
+    background-color:#121212;
+    padding: 5px 30px;
+    border-radius: 100px;
+    transition: 0.2s ease;
+    cursor: pointer;
+    font-style: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menuNav li:hover{
+    background-color: #1ed760;
+}
+
+.menuNav li:hover a{ 
+    color: #121212;
+
+}
+
+.menuNav a{
+    text-decoration: none;
+    color: #1ed760;
+
+}
+
+
+
