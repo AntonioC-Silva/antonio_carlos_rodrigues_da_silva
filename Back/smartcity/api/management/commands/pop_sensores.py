@@ -11,51 +11,65 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *a, **o):
-            df = pd.read_csv(o["arquivo"], encoding="utf-8-sig")
-            df.columns = [c.strip().lower().lstrip("\ufeff")for c in df.columns]
+        df = pd.read_csv(o["arquivo"], encoding="utf-8-sig")
+        df.columns = [c.strip().lower().lstrip("\ufeff") for c in df.columns]
 
-            if o["truncate"]: Sensores.objects.all().delete()
-            df["tipo"] = df["sensor"].astype(str)
-            df["mac_address"] = df["mac_address"].astype(str)
-            df["unidade_med"] = df["unidade_medida"].astype(str)
-            df["latitude"] = df["latitude"].astype(float)
-            df["longitude"] = df["longitude"].astype(float)
-            df["status"] = df["status"].astype(bool)
-            df["ambiente"] = df["ambiente"].astype(int)
+        if o["truncate"]:
+            Sensores.objects.all().delete()
 
-            if o["update"]:
-                criados = atualizados = 0
-                for r in df.itertuples(index=False):
-                    obj, criado = Sensores.objects.update_or_create(
-                        id=r.id,
-                        defaults={
-                            "tipo": r.tipo,
-                            "mac_address": r.mac_address,
-                            "unidade_med": r.unidade_med,
-                            "latitude": r.latitude,
-                            "longitude": r.longitude,
-                            "status": r.status,
-                            "ambiente_id": r.ambiente,
-                        },
-                    )
-                    if criado:
-                        criados += 1
-                    else:
-                        atualizados += 1
-                self.stdout.write(self.style.SUCCESS(f"Criados: {criados} | Atualizados: {atualizados}"))
-            else:
-                objs = [
-                    Sensores(
-                        tipo=r.tipo,
-                        mac_address=r.mac_address,
-                        unidade_med=r.unidade_med,
-                        latitude=r.latitude,
-                        longitude=r.longitude,
-                        status=r.status,
-                        ambiente_id=r.ambiente,
-                    )
-                    for r in df.itertuples(index=False)
-                ]
-                Sensores.objects.bulk_create(objs, ignore_conflicts=True)
-                self.stdout.write(self.style.SUCCESS(f"Criados: {len(objs)}"))
-               
+        tipo_map = {
+            "temperatura": "1",
+            "umidade": "2",
+            "luminosidade": "3",
+            "contador": "4"
+        }
+        df["tipo"] = df["sensor"].str.lower().map(tipo_map).fillna('1')
+
+        def parse_status(val):
+            val = str(val).lower()
+            if val in ['true', 'ativo', '1']:
+                return True
+            return False
+            
+        df["status"] = df["status"].apply(parse_status)
+
+        df["mac_address"] = df["mac_address"].astype(str)
+        df["unidade_med"] = df["unidade_medida"].astype(str)
+        df["latitude"] = df["latitude"].astype(float)
+        df["longitude"] = df["longitude"].astype(float)
+        df["ambiente"] = df["ambiente"].astype(int)
+
+        if o["update"]:
+            criados = atualizados = 0
+            for r in df.itertuples(index=False):
+                obj, criado = Sensores.objects.update_or_create(
+                    mac_address=r.mac_address,
+                    defaults={
+                        "tipo": r.tipo,
+                        "unidade_med": r.unidade_med,
+                        "latitude": r.latitude,
+                        "longitude": r.longitude,
+                        "status": r.status,
+                        "ambiente_id": r.ambiente,
+                    },
+                )
+                if criado:
+                    criados += 1
+                else:
+                    atualizados += 1
+            self.stdout.write(self.style.SUCCESS(f"Criados: {criados} | Atualizados: {atualizados}"))
+        else:
+            objs = [
+                Sensores(
+                    tipo=r.tipo,
+                    mac_address=r.mac_address,
+                    unidade_med=r.unidade_med,
+                    latitude=r.latitude,
+                    longitude=r.longitude,
+                    status=r.status,
+                    ambiente_id=r.ambiente,
+                )
+                for r in df.itertuples(index=False)
+            ]
+            Sensores.objects.bulk_create(objs, ignore_conflicts=True)
+            self.stdout.write(self.style.SUCCESS(f"Criados: {len(objs)}"))
