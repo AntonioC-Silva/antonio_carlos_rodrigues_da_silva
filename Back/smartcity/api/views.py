@@ -1,24 +1,19 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Responsaveis, Locals, Ambientes, Sensores, Historico
-from .serializers import ResponsaeveisSerializer, LocalsSerializer, AmbientesSerializer, SensoresSerializer, HistoricoSerializer
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from rest_framework import status
+from .models import *
+from .serializers import *
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
-from .filter import ResponsaveisFilter
-
-
-################### Responsaveis ###############
+from rest_framework.filters import SearchFilter
+from .filter import *
+from datetime import timedelta
+from django.utils import timezone
+from rest_framework import serializers
 
 class ResponsaveisView(ListCreateAPIView):
     queryset = Responsaveis.objects.all()
     serializer_class = ResponsaeveisSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,SearchFilter]
-    filterset_fields = ['id']
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['nome']
     filterset_class = ResponsaveisFilter
 
@@ -27,60 +22,51 @@ class ResponsaveisDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = ResponsaeveisSerializer
     permission_classes = [IsAuthenticated]
 
-###############################################
-
-
-################## Locals ############
-
 class LocalsView(ListCreateAPIView):
     queryset = Locals.objects.all()
     serializer_class = LocalsSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,SearchFilter]
-    filterset_fields = ['id']
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['local']
-    # filterset_class = LocalsFilter
+    filterset_class = LocaisFilter
 
 class LocalsDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Locals.objects.all()
     serializer_class = LocalsSerializer
     permission_classes = [IsAuthenticated]
 
-#################################### ambientes ############
-
 class AmbientesView(ListCreateAPIView):
     queryset = Ambientes.objects.all()
     serializer_class = AmbientesSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,SearchFilter]
-    filterset_fields = ['id']
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['descricao']
+    filterset_class = AmbientesFilter
 
 class AmbientesDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Ambientes.objects.all()
     serializer_class = AmbientesSerializer
     permission_classes = [IsAuthenticated]
 
-#################################### Sensores ############
 class SensoresView(ListCreateAPIView):
     queryset = Sensores.objects.all()
     serializer_class = SensoresSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend,SearchFilter]
-    filterset_fields = ['ambiente', 'tipo', 'status']
-
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['mac_address', 'unidade_med']
+    filterset_class = SensoresFilter
 
 class SensoresDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Sensores.objects.all()
     serializer_class = SensoresSerializer
     permission_classes = [IsAuthenticated]
 
-#################################### Historico ############
 class HistoricoView(ListCreateAPIView):
     queryset = Historico.objects.all()
     serializer_class = HistoricoSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['sensor', 'timestamp']
+    filterset_class = HistoricoFilter
 
     def perform_create(self, serializer):
         sensor = serializer.validated_data['sensor']
@@ -88,7 +74,6 @@ class HistoricoView(ListCreateAPIView):
              raise serializers.ValidationError("Não é possível registar medições para um sensor inativo.")
         serializer.save()
 
-################################ mediçoes recentes ############
 class MedicoesRecentesView(ListCreateAPIView):
     serializer_class = HistoricoSerializer
     permission_classes = [IsAuthenticated]
@@ -97,6 +82,3 @@ class MedicoesRecentesView(ListCreateAPIView):
         hours = int(self.request.query_params.get('hours', 24))
         tempo_limite = timezone.now() - timedelta(hours=hours)
         return Historico.objects.filter(timestamp__gte=tempo_limite)
-
-
-# Create your views here.

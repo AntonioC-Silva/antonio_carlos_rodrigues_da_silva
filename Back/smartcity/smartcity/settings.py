@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'api',
     'django_filters',
+    'middleware',
+    'Corsmiddleware',
 ]
 
 REST_FRAMEWORK = {
