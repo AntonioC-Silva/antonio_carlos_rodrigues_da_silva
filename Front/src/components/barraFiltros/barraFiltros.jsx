@@ -179,9 +179,7 @@ function BarraFiltros({ aoFiltrar, contexto, filtroInicial }) {
                                 <option value="false">Inativo</option>
                             </select>
 
-                            <button type="button" className="botaoAdicionar" onClick={abrirModal}>
-                                <i className="bi bi-plus-lg"></i> Adicionar
-                            </button>
+
                         </>
                     )}
 

@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import './historico.css';
 
+
 function Historico({ filtrosAtivos }) {
     const [listaHistorico, setListaHistorico] = useState([]);
 
+    // busca dados na api quando filtros mudam
     useEffect(() => {
         const carregarHistorico = async () => {
             try {
-                // Passa os filtros na requisição
+                // passa os filtros na requisicao
                 const resposta = await api.get('medicoes/', { params: filtrosAtivos });
                 setListaHistorico(resposta.data);
             } catch (erro) {
@@ -18,7 +20,7 @@ function Historico({ filtrosAtivos }) {
         carregarHistorico();
     }, [filtrosAtivos]);
 
-    // formatar data
+    // formata data
     const formatarData = (dataISO) => {
         return new Intl.DateTimeFormat('pt-BR', {
             day: '2-digit',
@@ -42,6 +44,7 @@ function Historico({ filtrosAtivos }) {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* coloca cada registro para uma linha */}
                     {listaHistorico.map((registro) => (
                         <tr key={registro.id}>
                             <td className="celulaDestaque">

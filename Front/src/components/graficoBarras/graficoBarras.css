@@ -1,3 +1,4 @@
+/*grafico */
 .graficoFigura {
   display: block;
   margin: 0;
@@ -9,6 +10,7 @@
   box-sizing: border-box;
 }
 
+/* titulo */
 .graficoTitulo {
   color: #ffffff;
   font-size: 18px;
@@ -20,6 +22,7 @@
   padding-bottom: 16px;
 }
 
+/*alinha as barras no fundo */
 .eixoX {
   display: flex;
   align-items: flex-end; 
@@ -30,6 +33,7 @@
   list-style: none;
 }
 
+/*coluna */
 .colunaItem {
   display: flex;
   flex-direction: column;
@@ -40,7 +44,7 @@
   margin: 0 4px; 
 }
 
-/*barra */
+/*barras */
 .barraVisual {
   display: block;
   width: 100%;
@@ -52,12 +56,13 @@
   transition: height 0.5s ease;
 }
 
+
 .barraVisual:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-/*Texto acima da barra */
+/* valor acima da barra das barras */
 .valorTexto {
   color: #ffffff;
   font-size: 12px;
@@ -65,7 +70,7 @@
   margin-bottom: 8px;
 }
 
-/* dbaixo da barra dias/semanas */
+/*legenda na parte de baixo das barras */
 .rotuloEixo {
   margin-top: 12px;
   color: #949393; 

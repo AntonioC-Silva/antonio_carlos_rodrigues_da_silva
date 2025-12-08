@@ -4,41 +4,45 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './navBar.css';
 
 function NavBar() {
+    // estado para controlar menu dropdown
     const [menuAberto, setMenuAberto] = useState(false);
     const navigate = useNavigate(); 
 
+    // alterna visibilidade do menu
     const alternarMenu = () => {
         setMenuAberto(!menuAberto);
     };
     
+    // funcao de logout
     const logout = () => {
-        // Remove os tokens do localStorage
+        // remove tokens do localstorage
         localStorage.removeItem('tokenAcesso');
         localStorage.removeItem('tokenAtualizacao');
 
-        // Fecha o menu
         setMenuAberto(false);
         
-        // Redireciona para a tela de login
+        // redireciona para login
         navigate('/login');
     };
 
     return (
         <header className="navBar">
             
+            {/* logo mandando para home */}
             <Link to="/" className="logo" aria-label="Ir para a página inicial">
                 <img src="./logo.png" alt="Logo Sense" />
             </Link>
             
             <nav className="menuNav" aria-label="Menu Principal">
                 <ul>
+                    {/* links*/}
                     <li><Link to='/'>HOME</Link></li>
                     <li><Link to='/sensores'>SENSORES</Link></li>
                     <li><Link to='/ambientes'>AMBIENTES</Link></li>
                     <li><Link to='/historico'>HISTÓRICO</Link></li>
                     
-                    {/* icone e modal */}
                     <li className="icone">
+                        {/*perfil do usuario */}
                         <button 
                             className={`botaoUsuario ${menuAberto ? 'ativo' : ''}`} 
                             onClick={alternarMenu}
@@ -49,12 +53,11 @@ function NavBar() {
                             <i className="bi bi-person-circle" aria-hidden="true"></i>
                         </button>
 
-                        {/*menu do usuario */}
+                        {/* menu suspenso*/}
                         {menuAberto && (
                             <article className="menuSuspenso">
                                 <ul className="listaAcoes">
                                     <li>
-                                        {/* Chama função logout */}
                                         <button className="botaoSair" onClick={logout}>
                                             <i className="bi bi-box-arrow-right"></i> SAIR
                                         </button>

@@ -1,4 +1,4 @@
-
+/*geral*/
 .tabela {
     width: 100%;
     max-width: 1800px;
@@ -12,15 +12,15 @@
     table-layout: fixed;
     background-color: #121212;
     box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-    
 }
 
-/*cabeçalho do tabela */
+/* cabecalho */
 .tabelaSensores thead {
     background-color: #121212;
     border-bottom: 2px solid #949393;
 }
 
+/* colunas do cabecalho */
 .tabelaSensores th {
     padding: 22px 20px;
     text-align: left;
@@ -32,24 +32,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
 }
 
 
-/* linhas da tabela */
+/* linhas */
 .tabelaSensores tbody tr {
     border-bottom: 1px solid #949393; 
     background-color: #121212;
     transition: all 0.2s ease;
-    
 }
+
 
 .tabelaSensores tbody tr:hover td {
     color: #1ed760;
 }
 
 
-/* parte da tabela no geral */
+/* partes individuais geral */
 .tabelaSensores td {
     padding: 20px;
     font-size: 16px;
@@ -64,7 +63,7 @@ small {
     font-size: 17px;
 }
 
-/*com cores especificas*/
+/* coluna de tipo com icone */
 .tabelaSensores td.tipo {
     display: flex;
     align-items: center;
@@ -73,11 +72,13 @@ small {
     color: #1ed760;
 }
 
+/* icone do tipo */
 .iconeTipo {
     font-size: 20px;
     color: #1ed760;
 }
 
+/*status */
 .tabelaSensores td.indicadorStatus {
     display: flex;
     align-items: center;
@@ -88,16 +89,19 @@ small {
     letter-spacing: 0.5px;
 }
 
+/* status ativo */
 .tabelaSensores td.statusAtivo {
     color: #1ed760;
     text-shadow: 0 0 8px rgba(30, 215, 96, 0.3);
 }
 
+/* status inativo*/
 .tabelaSensores td.statusInativo {
     color: #ffd700;
     text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
+/*luz do status */
 .luzStatus {
     font-size: 8px;
 }

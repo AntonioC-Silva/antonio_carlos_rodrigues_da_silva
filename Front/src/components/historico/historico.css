@@ -1,10 +1,11 @@
+/*tabela */
 .tabela {
     width: 100%;
     max-width: 1800px;
     margin: 40px auto;
 }
 
-/*tabela */
+/*base da tabela */
 .tabelaHistorico {
     width: 100%;
     table-layout: auto;
@@ -12,12 +13,13 @@
     border-collapse: collapse;
 }
 
-/*cabeçalho */
+/*cabecalho */
 .tabelaHistorico thead {
     background-color: #121212;
     border-bottom: 2px solid #949393;
 }
 
+/* partes individuais do cabecalho */
 .tabelaHistorico th {
     padding: 22px 20px;
     text-align: left;
@@ -35,10 +37,12 @@
     transition: all 0.2s ease;
 }
 
+
 .tabelaHistorico tbody tr:hover td {
     color: #1ed760;
 }
 
+/*dados */
 .tabelaHistorico td {
     padding: 20px;
     font-size: 16px;
@@ -46,40 +50,45 @@
     vertical-align: middle;
 }
 
-
-
+/* texto destacado */
 .destaque {
     font-weight: 600;
     color: #1ed760;
 }
 
+/* icone do sensor */
 .iconeSensor {
     color: #1ed760;
     font-size: 18px;
     margin-right: 10px;
 }
 
+/* texto do local */
 .local {
     color: #949393;
 }
 
+/* valor da medicao */
 .valor {
     font-weight: 700;
     font-size: 17px;
     color: #1ed760;
 }
 
+/* unidade de medida */
 .unidade {
     font-weight: 600;
     font-size: 14px;
     color: #949393;
 }
 
+/* data e hora */
 .data {
     color: #949393;
     font-size: 15px;
 }
 
+/* icone de relogio */
 .iconeRelogio {
     margin-right: 8px;
     font-size: 16px;

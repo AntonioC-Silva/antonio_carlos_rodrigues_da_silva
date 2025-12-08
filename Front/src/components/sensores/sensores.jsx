@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import './sensores.css';
 
+//definir icones e nomes por tipo
 const obterInfoTipo = (tipo) => {
     switch(String(tipo)) {
         case '1': return { nome: 'Temperatura', icone: 'bi-thermometer-half' };
@@ -12,10 +13,11 @@ const obterInfoTipo = (tipo) => {
     }
 };
 
-// pega o filtrosAtivos da PaginaSensores
+
 function Sensores({ filtrosAtivos }) {
     const [listaSensores, setListaSensores] = useState([]);
 
+    // busca dados na api quando filtro muda
     useEffect(() => {
         const carregarSensores = async () => {
             try {
@@ -29,7 +31,7 @@ function Sensores({ filtrosAtivos }) {
         };
 
         carregarSensores();
-    }, [filtrosAtivos]); // O array garante que vai recarregar quando o filtro mudar
+    }, [filtrosAtivos]);
 
     return (
         <section className="tabela">
@@ -46,6 +48,7 @@ function Sensores({ filtrosAtivos }) {
                 </thead>
                 <tbody>
                     {listaSensores.length > 0 ? (
+                        // manda sensores para cada linha da tabela
                         listaSensores.map((sensor) => {
                             const info = obterInfoTipo(sensor.tipo);
                             
@@ -73,6 +76,7 @@ function Sensores({ filtrosAtivos }) {
                             );
                         })
                     ) : (
+                        // mensagem se n tiver dados
                         <tr>
                             <td colSpan="6">
                                 Nenhum sensor encontrado com esses filtros.
