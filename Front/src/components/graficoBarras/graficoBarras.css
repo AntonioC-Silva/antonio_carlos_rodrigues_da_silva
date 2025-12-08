@@ -1,0 +1,75 @@
+.graficoFigura {
+  display: block;
+  margin: 0;
+  padding: 24px;
+  background-color: #121212;
+  border: 1px solid #949393;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.graficoTitulo {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid #949393;
+  padding-bottom: 16px;
+}
+
+.eixoX {
+  display: flex;
+  align-items: flex-end; 
+  justify-content: space-between;
+  height: 250px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.colunaItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%; 
+  margin: 0 4px; 
+}
+
+/*barra */
+.barraVisual {
+  display: block;
+  width: 100%;
+  min-width: 20px; 
+  max-width: 60px; 
+  background-color: #1ED760; 
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  transition: height 0.5s ease;
+}
+
+.barraVisual:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/*Texto acima da barra */
+.valorTexto {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* dbaixo da barra dias/semanas */
+.rotuloEixo {
+  margin-top: 12px;
+  color: #949393; 
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}

@@ -1,0 +1,42 @@
+.cardTipo {
+    background-color: #121212;
+    border: 1px solid #949393;
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px; 
+    cursor: pointer;
+    transition: all 0.2s ease;
+    list-style: none;
+    min-width: 220px;
+
+    flex: 1 1 220px;
+}
+
+.cardTipo:hover {
+    border-color: #1ED760;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(30, 215, 96, 0.15);
+}
+
+.iconeTipo {
+    font-size: 48px;
+    color: #1ED760;
+}
+
+.tituloTipo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: center;
+}
+
+.cardTipo:hover .tituloTipo {
+    color: #1ED760;
+}

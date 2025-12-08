@@ -1,0 +1,70 @@
+.tabela {
+    width: 100%;
+    max-width: 1800px;
+    margin: 40px auto;
+}
+
+/*tabela */
+.tabelaAmbientes {
+    width: 100%;
+    table-layout: auto;
+    background-color: #121212;
+    border-collapse: collapse;
+}
+
+/*cabeçalho */
+.tabelaAmbientes thead {
+    background-color: #121212;
+    border-bottom: 2px solid #949393;
+}
+
+.tabelaAmbientes th {
+    padding: 22px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1ed760;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/*linhas */
+.tabelaAmbientes tbody tr {
+    border-bottom: 1px solid #949393;
+    background-color: #121212;
+    transition: all 0.2s ease;
+}
+
+.tabelaAmbientes tbody tr:hover td {
+    color: #1ed760;
+}
+
+
+
+.tabelaAmbientes td {
+    padding: 20px;
+    font-size: 16px;
+    color: #949393;
+    vertical-align: middle;
+}
+
+
+
+.iconeLocal {
+    color: #1ed760;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* responsavel */
+.responsavel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #121212;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #949393;
+    border: 1px solid #949393;
+}

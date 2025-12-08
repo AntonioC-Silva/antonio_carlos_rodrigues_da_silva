@@ -1,0 +1,56 @@
+/* card*/
+.cardItem {
+  list-style: none; 
+  background-color: #121212;
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #949393;
+  border-left: 4px solid #1ED760; 
+  transition: transform 0.3s ease;
+}
+
+
+.cardItem:hover {
+  transform: translateY(-5px); 
+  border-color: #1ED760; 
+}
+
+/*alinhamento */
+.cardConteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*titulo e valor */
+.cardCabecalho {
+  display: flex;
+  flex-direction: column;
+}
+
+/* titulo */
+.cardTitulo {
+  color: #949393;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/*numero grande */
+.cardValor {
+  display: block;
+  margin-top: 8px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* icone */
+.cardIcone {
+  font-size: 32px;
+  color: #1ED760;
+  opacity: 0.8;
+  margin: 0;
+}

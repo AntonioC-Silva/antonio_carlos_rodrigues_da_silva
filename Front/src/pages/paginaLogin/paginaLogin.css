@@ -1,0 +1,43 @@
+.login {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate; 
+}
+
+/*linhas que ficam de fundo */
+.login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./linhas.png'); 
+    background-size:auto 77%;
+    background-position: center;
+    z-index: -1; 
+}
+
+/*logo */
+.logoCanto {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 150px;
+    z-index: 10;
+}
+
+/*area do card */
+.cardCentro {
+    z-index: 5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}

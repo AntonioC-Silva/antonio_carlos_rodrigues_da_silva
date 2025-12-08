@@ -1,0 +1,19 @@
+.pagina{
+    background-color: #121212;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudoPrincipal{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    margin-top: 90px;
+    gap: 30px; 
+}

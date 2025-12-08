@@ -1,0 +1,103 @@
+
+.tabela {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0px auto;
+    border: 2px solid #949393;
+}
+
+/* tabela */
+.tabelaSensores {
+    width: 100%;
+    table-layout: fixed;
+    background-color: #121212;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    
+}
+
+/*cabeçalho do tabela */
+.tabelaSensores thead {
+    background-color: #121212;
+    border-bottom: 2px solid #949393;
+}
+
+.tabelaSensores th {
+    padding: 22px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1ed760;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+
+/* linhas da tabela */
+.tabelaSensores tbody tr {
+    border-bottom: 1px solid #949393; 
+    background-color: #121212;
+    transition: all 0.2s ease;
+    
+}
+
+.tabelaSensores tbody tr:hover td {
+    color: #1ed760;
+}
+
+
+/* parte da tabela no geral */
+.tabelaSensores td {
+    padding: 20px;
+    font-size: 16px;
+    color: #949393;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+small {
+    font-size: 17px;
+}
+
+/*com cores especificas*/
+.tabelaSensores td.tipo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: #1ed760;
+}
+
+.iconeTipo {
+    font-size: 20px;
+    color: #1ed760;
+}
+
+.tabelaSensores td.indicadorStatus {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.tabelaSensores td.statusAtivo {
+    color: #1ed760;
+    text-shadow: 0 0 8px rgba(30, 215, 96, 0.3);
+}
+
+.tabelaSensores td.statusInativo {
+    color: #ffd700;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.luzStatus {
+    font-size: 8px;
+}

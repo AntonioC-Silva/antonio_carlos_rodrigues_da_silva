@@ -17,6 +17,9 @@ class LocaisFilter(df.FilterSet):
 
 class AmbientesFilter(df.FilterSet):
     descricao = df.CharFilter(field_name='descricao', lookup_expr='icontains')
+    # Filtra pelo texto do nome do responsável e do local
+    responsavel = df.CharFilter(field_name='responsavel__nome', lookup_expr='icontains', label='Responsável')
+    local_nome = df.CharFilter(field_name='local__local', lookup_expr='icontains', label='Nome do Local')
 
     class Meta:
         model = Ambientes
@@ -35,6 +38,10 @@ class SensoresFilter(df.FilterSet):
 class HistoricoFilter(df.FilterSet):
     data_inicio = df.DateTimeFilter(field_name='timestamp', lookup_expr='gte', label='A partir de (Data/Hora)')
     data_fim = df.DateTimeFilter(field_name='timestamp', lookup_expr='lte', label='Até (Data/Hora)')
+
+    # filtro por tipo de sensor e nome do local
+    tipo = df.ChoiceFilter(field_name='sensor__tipo', choices=Sensores.Sensor.choices, label='Tipo de Sensor')
+    local_nome = df.CharFilter(field_name='sensor__ambiente__local__local', lookup_expr='icontains', label='Local')
     
     class Meta:
         model = Historico

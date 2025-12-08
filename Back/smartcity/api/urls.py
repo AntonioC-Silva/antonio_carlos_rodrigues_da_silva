@@ -3,7 +3,7 @@ from .views import *
 from rest_framework_simplejwt.views import *
 
 urlpatterns = [
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), # Antes: 'api/token/'
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('responsaveis/', ResponsaveisView.as_view()),
     path('responsaveis/<int:pk>/', ResponsaveisDetailView.as_view()),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('sensores/<int:pk>/', SensoresDetailView.as_view()),
     path('medicoes/', HistoricoView.as_view()),
     path('medicoes/recentes/', MedicoesRecentesView.as_view()),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
 ]

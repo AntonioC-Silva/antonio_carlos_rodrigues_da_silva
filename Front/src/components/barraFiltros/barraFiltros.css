@@ -1,0 +1,110 @@
+.secaoFiltros {
+    padding: 20px 5%;
+    margin: 0;
+    margin-top: 90px;
+    background-color: #121212;
+    border-bottom: 1px solid #949393;
+    display: flex;
+}
+
+.formularioBusca {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* campo de busca */
+.entradaBusca {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 20px;
+    background-color: #121212;
+    border: 1px solid #949393;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 15px; 
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.entradaBusca:focus {
+    border-color: #1ed760;
+    box-shadow: 0 0 8px rgba(30, 215, 96, 0.2);
+}
+
+.entradaBusca::placeholder {
+    color: #949393;
+}
+
+.entradaResponsavel {
+    max-width: 200px;
+}
+
+/* filtros */
+.conjuntoFiltros {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seletorOpcao {
+    background-color: #121212;
+    color: #1ed760;
+    border: 1px solid #949393;
+    padding: 10px 10px 10px 15px; 
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px; 
+    cursor: pointer;
+    outline: none;
+    min-width: 130px;
+    transition: border-color 0.2s;
+}
+
+/* input de data */
+.seletorData {
+    background-color: #121212;
+    color: #949393;
+    border: 1px solid #949393;
+    padding: 10px; 
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px; 
+    outline: none;
+    transition: border-color 0.2s;
+
+}
+
+/* 'até' */
+.textoSeparador {
+    color: #949393;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* icone do calendario */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 5;
+    font-size: 20px;
+
+
+}
+
+.seletorOpcao:hover,
+.seletorOpcao:focus,
+.seletorData:focus {
+    border-color: #1ed760;
+    color: #fff;
+}
+
+

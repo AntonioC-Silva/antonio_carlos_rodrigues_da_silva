@@ -1,0 +1,52 @@
+.secaoPerfil {
+  background-color: #121212;
+  border: 1px solid #949393;
+  padding: 48px 32px;
+  margin-top: 48px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+
+.areaFoto {
+  flex-shrink: 0;
+  width: 500px;
+  height: 500px;
+  margin: 0;
+}
+
+.sobreFoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1ED760;
+}
+
+.sobreTexto {
+  flex: 1;
+}
+
+.sobreTitulo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.sobreCargo {
+  display: block;
+  color: #1ED760;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.sobreDescricao {
+  color: #949393;
+  line-height: 24px;
+  font-size: 16px;
+}

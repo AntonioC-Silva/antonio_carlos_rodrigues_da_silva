@@ -1,0 +1,86 @@
+.tabela {
+    width: 100%;
+    max-width: 1800px;
+    margin: 40px auto;
+}
+
+/*tabela */
+.tabelaHistorico {
+    width: 100%;
+    table-layout: auto;
+    background-color: #121212;
+    border-collapse: collapse;
+}
+
+/*cabeçalho */
+.tabelaHistorico thead {
+    background-color: #121212;
+    border-bottom: 2px solid #949393;
+}
+
+.tabelaHistorico th {
+    padding: 22px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1ed760;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/*linhas */
+.tabelaHistorico tbody tr {
+    border-bottom: 1px solid #949393;
+    background-color: #121212;
+    transition: all 0.2s ease;
+}
+
+.tabelaHistorico tbody tr:hover td {
+    color: #1ed760;
+}
+
+.tabelaHistorico td {
+    padding: 20px;
+    font-size: 16px;
+    color: #949393;
+    vertical-align: middle;
+}
+
+
+
+.destaque {
+    font-weight: 600;
+    color: #1ed760;
+}
+
+.iconeSensor {
+    color: #1ed760;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.local {
+    color: #949393;
+}
+
+.valor {
+    font-weight: 700;
+    font-size: 17px;
+    color: #1ed760;
+}
+
+.unidade {
+    font-weight: 600;
+    font-size: 14px;
+    color: #949393;
+}
+
+.data {
+    color: #949393;
+    font-size: 15px;
+}
+
+.iconeRelogio {
+    margin-right: 8px;
+    font-size: 16px;
+}

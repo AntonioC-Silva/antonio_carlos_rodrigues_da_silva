@@ -8,6 +8,9 @@ from .filter import *
 from datetime import timedelta
 from django.utils import timezone
 from rest_framework import serializers
+from django.db.models import Count
+from django.db.models.functions import TruncDate
+from rest_framework.response import Response
 
 class ResponsaveisView(ListCreateAPIView):
     queryset = Responsaveis.objects.all()
@@ -82,3 +85,46 @@ class MedicoesRecentesView(ListCreateAPIView):
         hours = int(self.request.query_params.get('hours', 24))
         tempo_limite = timezone.now() - timedelta(hours=hours)
         return Historico.objects.filter(timestamp__gte=tempo_limite)
+    
+
+class DashboardView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        # dados para o gráfico de Status dos Sensores
+        status_data = Sensores.objects.values('status').annotate(total= Count('id'))
+        
+        # Formatando para o Front (Ativos vs Inativos)
+        status_formatado = [
+            {
+                'nome': 'Ativo' if item['status'] else 'Inativo',
+                'valor': item['total']
+            }
+            for item in status_data
+        ]
+
+        # 2. Dados para o grafico de historico pega os ultimos 7 dias
+        # Agrupa medições por data
+        limite_dias = timezone.now() - timedelta(days=7)
+        historico_data = (
+            Historico.objects
+            .filter(timestamp__gte=limite_dias)
+            .annotate(data=TruncDate('timestamp'))
+            .values('data')
+            .annotate(total=Count('id'))
+            .order_by('data')
+        )
+
+        historico_formatado = [
+            {
+                'nome': item['data'].strftime('%d/%m'), # Formata dia/mês
+                'valor': item['total']
+            }
+            for item in historico_data
+        ]
+
+        return Response({
+            'status_sensores': status_formatado,
+            'historico_medicoes': historico_formatado
+        })
+    
