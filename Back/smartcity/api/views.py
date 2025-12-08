@@ -12,6 +12,7 @@ from django.db.models import Count
 from django.db.models.functions import TruncDate
 from rest_framework.response import Response
 
+##### responsaveis ####
 class ResponsaveisView(ListCreateAPIView):
     queryset = Responsaveis.objects.all()
     serializer_class = ResponsaeveisSerializer
@@ -25,6 +26,7 @@ class ResponsaveisDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = ResponsaeveisSerializer
     permission_classes = [IsAuthenticated]
 
+##### locais ####
 class LocalsView(ListCreateAPIView):
     queryset = Locals.objects.all()
     serializer_class = LocalsSerializer
@@ -38,6 +40,7 @@ class LocalsDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = LocalsSerializer
     permission_classes = [IsAuthenticated]
 
+##### ambientes ####
 class AmbientesView(ListCreateAPIView):
     queryset = Ambientes.objects.all()
     serializer_class = AmbientesSerializer
@@ -51,6 +54,7 @@ class AmbientesDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = AmbientesSerializer
     permission_classes = [IsAuthenticated]
 
+##### sensores ####
 class SensoresView(ListCreateAPIView):
     queryset = Sensores.objects.all()
     serializer_class = SensoresSerializer
@@ -64,6 +68,7 @@ class SensoresDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = SensoresSerializer
     permission_classes = [IsAuthenticated]
 
+##### historico ####
 class HistoricoView(ListCreateAPIView):
     queryset = Historico.objects.all()
     serializer_class = HistoricoSerializer
@@ -86,7 +91,7 @@ class MedicoesRecentesView(ListCreateAPIView):
         tempo_limite = timezone.now() - timedelta(hours=hours)
         return Historico.objects.filter(timestamp__gte=tempo_limite)
     
-
+##### dashboard ####
 class DashboardView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
@@ -94,7 +99,7 @@ class DashboardView(ListCreateAPIView):
         # dados para o gráfico de Status dos Sensores
         status_data = Sensores.objects.values('status').annotate(total= Count('id'))
         
-        # Formatando para o Front (Ativos vs Inativos)
+        # Formatando pro Front (Ativos vs Inativos)
         status_formatado = [
             {
                 'nome': 'Ativo' if item['status'] else 'Inativo',
@@ -103,7 +108,7 @@ class DashboardView(ListCreateAPIView):
             for item in status_data
         ]
 
-        # 2. Dados para o grafico de historico pega os ultimos 7 dias
+        # Dados para o grafico de historico pega os ultimos 7 dias
         # Agrupa medições por data
         limite_dias = timezone.now() - timedelta(days=7)
         historico_data = (
@@ -127,4 +132,3 @@ class DashboardView(ListCreateAPIView):
             'status_sensores': status_formatado,
             'historico_medicoes': historico_formatado
         })
-    

@@ -1,0 +1,127 @@
+/* footer */
+.footer {
+    background-color: #121212; 
+    color: #ffffff; 
+    padding: 40px 50px 20px 50px;
+    border-top: 1px solid #949393;
+    display: grid;
+    grid-template-columns: 200px auto 1fr;
+    grid-template-rows: auto auto; 
+    grid-template-areas: 
+        "links social logo"
+        "copyright copyright copyright";
+        
+    align-items: start;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* links*/
+.links {
+    grid-area: links;
+}
+
+/* titulos*/
+.links h3, .social h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 18px; 
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #1ED760; 
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* links individuais */
+.links ul li a {
+    color: #949393;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+
+.links ul li a:hover {
+    color: #1ED760;
+    padding-left: 5px;
+}
+
+/*redes sociais */
+.social {
+    grid-area: social;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 80px;
+}
+
+/* lista de icones */
+.icones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    gap: 24px; 
+}
+
+.icones li a {
+    color: #949393;
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+    transition: color 0.3s ease;
+    font-size: 15px;
+}
+
+/* icones */
+.icones li a i {
+    color: #1ED760; 
+    font-size: 22px; 
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+
+.icones li a:hover {
+    color: #ffffff; 
+}
+
+.icones li a:hover i {
+    transform: scale(1.2);
+}
+
+/* logo */
+.logoFooter {
+    grid-area: logo;
+    justify-self: end; 
+    align-self: center; 
+    width: 200px; 
+    height: auto;
+    margin: 0;
+    margin-right: 50px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.logoFooter:hover {
+    opacity: 1;
+}
+
+/* copyright */
+.copyright {
+    grid-area: copyright;
+    text-align: center;
+    border-top: 1px solid #333; 
+    padding-top: 20px;
+    margin-top: 40px;
+    font-size: 14px; 
+    color: #949393;
+}

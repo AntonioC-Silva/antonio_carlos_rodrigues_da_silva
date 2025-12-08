@@ -8,9 +8,9 @@ const GraficoBarras = ({ titulo, dados }) => {
     return (
       <figure className="graficoFigura">
         <figcaption className="graficoTitulo">{titulo}</figcaption>
-        <div style={{ color: '#949393', textAlign: 'center', padding: '40px' }}>
+        <article className='carregando' >
           Carregando ou sem dados...
-        </div>
+        </article>
       </figure>
     );
   }

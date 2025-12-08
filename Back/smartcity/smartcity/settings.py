@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,9 @@ SECRET_KEY = 'django-insecure-)o&71^g*xf!_v_e_bpi&^5n4&y)xj@1e04_po3w4u9+9cuov2z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+##### cors ####
 CORS_ALLOWED_ORIGINS = [
+    # urls permitidas para o front consumir a api
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
@@ -47,9 +49,19 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    # define autenticacao via jwt como padrao
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
+}
+
+# configuracoes do jwt
+SIMPLE_JWT = {
+    # tempo do token de acesso 
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    
+    # tempo do token de atualizacao
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 MIDDLEWARE = [

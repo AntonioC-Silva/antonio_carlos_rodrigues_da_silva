@@ -5,6 +5,7 @@ from django.db import transaction
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
+        # define argumentos do comando
         parser.add_argument("--arquivo", default="population/ambientes.csv")
         parser.add_argument("--truncate", action="store_true")
         parser.add_argument("--update", action="store_true")
@@ -12,18 +13,22 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **options):
         try:
+            # carrega o arquivo csv
             df = pd.read_csv(options["arquivo"], encoding="utf-8-sig")
         except FileNotFoundError:
             self.stdout.write(self.style.ERROR(f"Arquivo não encontrado: {options['arquivo']}"))
             return
 
+        # padroniza nome das colunas
         df.columns = [c.strip().lower().lstrip("\ufeff") for c in df.columns]
 
+        # apaga dados anteriores se solicitado
         if options["truncate"]:
             Ambientes.objects.all().delete()
             self.stdout.write(self.style.WARNING("Dados antigos apagados."))
 
         try:
+            # ajusta tipos para chaves estrangeiras
             df["descricao"] = df["descricao"].astype(str)
             df["local_id"] = df["local"].astype(int)
             df["responsavel_id"] = df["responsavel"].astype(int)
@@ -31,6 +36,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR(f"Erro no CSV: {e}"))
             return
 
+        # modo atualizacao linha a linha
         if options["update"]:
             criados = 0
             atualizados = 0
@@ -48,6 +54,7 @@ class Command(BaseCommand):
                     atualizados += 1
             self.stdout.write(self.style.SUCCESS(f"Concluído: {criados} criados, {atualizados} atualizados."))
         
+        # modo insercao em massa
         else:
             objs = [
                 Ambientes(
