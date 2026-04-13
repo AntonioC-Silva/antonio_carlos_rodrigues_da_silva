@@ -31,6 +31,7 @@ CORS_ALLOWED_ORIGINS = [
     # urls permitidas para o front consumir a api
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://antonio-carlos-rodrigues-da-silva.vercel.app",
 ]
 
 # Application definition
