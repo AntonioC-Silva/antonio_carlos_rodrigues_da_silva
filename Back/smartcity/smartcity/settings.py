@@ -33,7 +33,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://antonio-carlos-rodrigues-da-silva.vercel.app",
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://antonio-carlos-rodrigues-da-silva.vercel.app",
+]
 # Application definition
 
 INSTALLED_APPS = [
