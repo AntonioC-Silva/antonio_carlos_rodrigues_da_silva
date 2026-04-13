@@ -27,12 +27,7 @@ SECRET_KEY = 'django-insecure-)o&71^g*xf!_v_e_bpi&^5n4&y)xj@1e04_po3w4u9+9cuov2z
 DEBUG = True
 
 ##### cors ####
-CORS_ALLOWED_ORIGINS = [
-    # urls permitidas para o front consumir a api
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://antonio-carlos-rodrigues-da-silva.vercel.app",
-]
+CORS_ALLOWED_ORIGINS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     "https://antonio-carlos-rodrigues-da-silva.vercel.app",
 ]
