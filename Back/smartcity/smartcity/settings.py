@@ -33,6 +33,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://antonio-carlos-rodrigues-da-silva.vercel.app",
 ]
+
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    'api-sense-e4jo.onrender.com'
+]
 # Application definition
 
 INSTALLED_APPS = [
